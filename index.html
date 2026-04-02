@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Megha ❤️ Mahesh</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    color: white;
+    text-align: center;
+    overflow: hidden;
+}
+
+.page {
+    display: none;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.active {
+    display: flex;
+}
+
+button {
+    padding: 15px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 30px;
+    background: white;
+    color: #ff4b6e;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: 0.3s;
+}
+button:hover {
+    transform: scale(1.1);
+}
+
+.heart {
+    font-size: 50px;
+    animation: beat 1s infinite;
+}
+@keyframes beat {
+    0% {transform: scale(1);}
+    50% {transform: scale(1.3);}
+    100% {transform: scale(1);}
+}
+
+#timer {
+    font-size: 40px;
+    margin-top: 20px;
+}
+
+.gallery img {
+    width: 220px;
+    height: 220px;
+    margin: 10px;
+    border-radius: 20px;
+    object-fit: cover;
+    transition: 0.3s;
+}
+.gallery img:hover {
+    transform: scale(1.1);
+}
+
+/* FINAL IMAGE (SMALL + PREMIUM) */
+.final-img {
+    width: 200px;
+    height: 200px;
+    border-radius: 20px;
+    object-fit: cover;
+    margin-bottom: 20px;
+    box-shadow: 0 0 20px rgba(255,255,255,0.6);
+}
+
+textarea {
+    width: 60%;
+    height: 80px;
+    border-radius: 10px;
+    border: none;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.fade {
+    animation: fadeIn 1s;
+}
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+<div class="page active fade" id="page1">
+    <h1>🎁 A Special Surprise</h1>
+    <p>For My Lovely Sister 💖</p>
+    <button onclick="nextPage(2)">Open Surprise 💝</button>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page fade" id="page2">
+    <h1>💍 Megha <span class="heart">❤️</span> Mahesh</h1>
+    <h2>Are Getting Married!</h2>
+    <button onclick="nextPage(3)">Next ➡️</button>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page fade" id="page3">
+    <h1>⏳ Countdown Begins</h1>
+    <div id="timer"></div>
+    <button onclick="nextPage(4)">Next ➡️</button>
+</div>
+
+<!-- PAGE 4 -->
+<div class="page fade" id="page4">
+    <h1>💌 From Your Brother</h1>
+    <p style="width:60%; font-size:18px;">
+        Dear Megha,<br><br>
+        From childhood memories to this beautiful moment…  
+        watching you step into a new journey fills my heart with happiness and emotions ❤️<br><br>
+        
+        <b>“A sister is a little piece of childhood that can never be lost.”</b><br><br>
+        
+        Wishing you endless love, laughter, and a lifetime of happiness with Mahesh 💖
+    </p>
+    <button onclick="nextPage(5)">Next ➡️</button>
+</div>
+
+<!-- PAGE 5 -->
+<div class="page fade" id="page5">
+    <h1>📸 Memories</h1>
+    <div class="gallery">
+        <img src="file:///C:/Users/Admin/Downloads/megha2.jpeg">
+        <img src="file:///C:/Users/Admin/Downloads/megha3.jpeg">
+        <img src="file:///C:/Users/Admin/Downloads/megha.jpeg">
+    </div>
+    <button onclick="nextPage(6)">Final Surprise 🎉</button>
+</div>
+
+<!-- PAGE 6 FINAL -->
+<div class="page fade" id="page6">
+    
+    <h1>🎉 Final Surprise</h1>
+
+    <!-- FIXED IMAGE -->
+    <img src="file:///C:/Users/Admin/Downloads/megha5.jpeg" class="final-img">
+
+    <h2>Megha ❤️ Mahesh</h2>
+
+    <!-- FEEDBACK -->
+    <h3>💬 Leave a Message</h3>
+    <textarea placeholder="Write your message here..."></textarea>
+    <br>
+    <button onclick="alert('Thank you for your message ❤️')">Submit</button>
+
+</div>
+
+<script>
+
+function nextPage(pageNumber) {
+    let pages = document.querySelectorAll(".page");
+    pages.forEach(p => p.classList.remove("active"));
+    document.getElementById("page" + pageNumber).classList.add("active");
+}
+
+var weddingDate = new Date("April 12, 2026 00:00:00").getTime();
+
+setInterval(function() {
+
+    var now = new Date().getTime();
+    var distance = weddingDate - now;
+
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById("timer").innerHTML =
+        days + "d " + hours + "h " + minutes + "m " + seconds + "s";
+
+}, 1000);
+
+</script>
+
+</body>
+</html>
